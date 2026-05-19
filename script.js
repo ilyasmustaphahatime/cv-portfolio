@@ -9,6 +9,7 @@ const revealElements = document.querySelectorAll(".reveal");
 const contactForm = document.getElementById("contact-form");
 const formStatus = document.getElementById("form-status");
 const submitButton = contactForm?.querySelector('button[type="submit"]');
+const fallbackEmailLink = document.getElementById("fallback-email-link");
 
 function setNavOpen(forceOpen) {
   if (!mobileNavToggle || !topNav) return;
@@ -97,51 +98,99 @@ function setSubmitState(isSending) {
   submitButton.textContent = isSending ? "> Sending..." : "> Send Message";
 }
 
-function showContactSuccessFromUrl() {
-  if (!contactForm || !formStatus) return;
+function setFallbackLinkVisibility(isVisible) {
+  if (!fallbackEmailLink) return;
+  fallbackEmailLink.classList.toggle("visible", isVisible);
+}
 
-  const currentUrl = new URL(window.location.href);
-  const contactStatus = currentUrl.searchParams.get("contact");
+function buildMailtoLink(name, email, message) {
+  const subject = encodeURIComponent(`Portfolio message from ${name}`);
+  const body = encodeURIComponent(
+    `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+  );
+  return `mailto:ilyasihtm5@gmail.com?subject=${subject}&body=${body}`;
+}
 
-  if (contactStatus !== "success") return;
+async function submitWithFormSubmit(form) {
+  const formData = new FormData(form);
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), 10000);
 
-  formStatus.textContent =
-    "Message sent successfully. Please check my inbox for the reply process.";
-  formStatus.className = "form-status success";
-  contactForm.reset();
-  contactForm.scrollIntoView({ behavior: "smooth", block: "center" });
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+      signal: controller.signal,
+    });
 
-  currentUrl.searchParams.delete("contact");
-  const cleanUrl = `${currentUrl.pathname}${currentUrl.search}${currentUrl.hash}`;
-  window.history.replaceState({}, "", cleanUrl);
+    if (!response.ok) {
+      throw new Error(`Request failed with status ${response.status}`);
+    }
+
+    return await response.json();
+  } finally {
+    window.clearTimeout(timeoutId);
+  }
 }
 
 if (contactForm) {
-  contactForm.addEventListener("submit", (event) => {
+  contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
     const name = contactForm.elements.namedItem("name").value.trim();
     const email = contactForm.elements.namedItem("email").value.trim();
     const message = contactForm.elements.namedItem("message").value.trim();
 
     if (!name || !email || !message) {
-      event.preventDefault();
       formStatus.textContent = "Please fill in all fields before sending.";
       formStatus.className = "form-status error";
+      setFallbackLinkVisibility(false);
       setSubmitState(false);
       return;
     }
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
-      event.preventDefault();
       formStatus.textContent = "Please enter a valid email address.";
       formStatus.className = "form-status error";
+      setFallbackLinkVisibility(false);
       setSubmitState(false);
       return;
     }
 
     setSubmitState(true);
-    formStatus.textContent = "Sending message and redirecting to confirmation...";
+    setFallbackLinkVisibility(false);
+    formStatus.textContent = "Sending message...";
     formStatus.className = "form-status success";
+
+    try {
+      const result = await submitWithFormSubmit(contactForm);
+
+      if (!result.success) {
+        throw new Error("FormSubmit did not confirm success.");
+      }
+
+      formStatus.textContent =
+        "Message sent successfully. I should receive it in my inbox soon.";
+      formStatus.className = "form-status success";
+      contactForm.reset();
+      setSubmitState(false);
+    } catch (error) {
+      const mailtoLink = buildMailtoLink(name, email, message);
+
+      if (fallbackEmailLink) {
+        fallbackEmailLink.href = mailtoLink;
+      }
+
+      formStatus.textContent =
+        "The form service is temporarily unavailable. You can still contact me using the email app button below.";
+      formStatus.className = "form-status error";
+      setFallbackLinkVisibility(true);
+      setSubmitState(false);
+    }
   });
 }
 
@@ -153,4 +202,3 @@ window.addEventListener("resize", () => {
 
 setActiveLink();
 updateBackToTop();
-showContactSuccessFromUrl();

@@ -418,7 +418,8 @@ img {
 }
 
 .terminal-button,
-.mini-button {
+.mini-button,
+.fallback-email-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -434,7 +435,8 @@ img {
 }
 
 .terminal-button:hover,
-.mini-button:hover {
+.mini-button:hover,
+.fallback-email-link:hover {
   transform: translateY(-2px);
 }
 
@@ -446,6 +448,7 @@ img {
 
 .terminal-button.primary,
 .mini-button,
+.fallback-email-link,
 .submit-button {
   color: var(--accent-color);
   background: rgba(250, 204, 21, 0.06);
@@ -1097,6 +1100,15 @@ img {
 .contact-form {
   display: grid;
   gap: 0.75rem;
+}
+
+.fallback-email-link {
+  display: none;
+  width: fit-content;
+}
+
+.fallback-email-link.visible {
+  display: inline-flex;
 }
 
 .hidden-field {
