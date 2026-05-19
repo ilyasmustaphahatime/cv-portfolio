@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Interactive CV portfolio for Ilyas Hatime, Software Engineering student focused on AI, systems, and future quantum computing."
+    />
+    <title>Ilyas Hatime | Developer CV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-background" aria-hidden="true">
+      <div class="grid-layer"></div>
+      <div class="glow glow-left"></div>
+      <div class="glow glow-right"></div>
+      <div class="circuit-lines"></div>
+    </div>
+
+    <div class="page-shell">
+      <aside class="side-panel">
+        <nav class="side-nav" aria-label="Sidebar navigation">
+          <a class="side-link active" href="#home">
+            <span class="side-icon">⌂</span>
+            <span>Home</span>
+          </a>
+          <a class="side-link" href="#about">
+            <span class="side-icon">○</span>
+            <span>About</span>
+          </a>
+          <a class="side-link" href="#skills">
+            <span class="side-icon">&lt;/&gt;</span>
+            <span>Skills</span>
+          </a>
+          <a class="side-link" href="#projects">
+            <span class="side-icon">▣</span>
+            <span>Projects</span>
+          </a>
+          <a class="side-link" href="#education">
+            <span class="side-icon">△</span>
+            <span>Education</span>
+          </a>
+          <a class="side-link" href="#contact">
+            <span class="side-icon">✉</span>
+            <span>Contact</span>
+          </a>
+        </nav>
+
+        <div class="side-connect">
+          <p>Let&apos;s connect</p>
+          <div class="side-socials">
+            <a
+              href="https://github.com/ilyasmustaphahatime"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GH
+            </a>
+            <a
+              href="https://www.linkedin.com/in/ilyas-ilyas-4372a33b4/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B0DAUPdgySHGIzhyr4azHnw%3D%3D"
+              target="_blank"
+              rel="noreferrer"
+            >
+              in
+            </a>
+            <a href="mailto:ilyasihtm5@gmail.com">@</a>
+          </div>
+        </div>
+      </aside>
+
+      <div class="workspace">
+        <header class="topbar" id="home">
+          <a class="brand" href="#home">
+            <span class="brand-mark">&lt;/&gt;</span>
+            <span class="brand-name">Ilyas Hatime</span>
+          </a>
+
+          <button
+            class="mobile-nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="top-nav"
+            aria-label="Toggle navigation"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <nav class="top-nav" id="top-nav" aria-label="Top navigation">
+            <a class="top-link active" href="#home">Home</a>
+            <a class="top-link" href="#about">About</a>
+            <a class="top-link" href="#skills">Skills</a>
+            <a class="top-link" href="#projects">Projects</a>
+            <a class="top-link" href="#education">Education</a>
+            <a class="top-link" href="#contact">Contact</a>
+          </nav>
+
+          <button class="theme-dot" type="button" aria-label="Design status">
+            <span></span>
+          </button>
+        </header>
+
+        <main class="dashboard">
+          <section class="hero section" aria-labelledby="hero-title">
+            <div class="hero-copy reveal">
+              <p class="intro-line">Hi, my name is</p>
+              <h1 id="hero-title">
+                <span class="line-one">Ilyas</span>
+                <span class="line-two">Hatime</span>
+                <span class="cursor">|</span>
+              </h1>
+              <p class="hero-role">
+                <span>&lt;</span> Software Engineering Student <span>/&gt;</span>
+              </p>
+              <p class="hero-text">
+                I build digital experiences, solve problems and write code that
+                makes an impact while preparing for a future in AI, systems, and
+                quantum-driven innovation.
+              </p>
+
+              <div class="hero-actions">
+                <a class="terminal-button primary" href="#projects">
+                  &gt; View My Work
+                </a>
+                <a class="terminal-button secondary" href="assets/cv.pdf" download>
+                  Download CV
+                </a>
+              </div>
+            </div>
+
+            <div class="hero-scene reveal">
+              <div class="code-device">
+                <div class="device-screen">
+                  <div class="code-window">
+                    <p><span class="code-key">class</span> <span class="code-blue">Developer</span>:</p>
+                    <p class="indent">
+                      <span class="code-key">def</span> __init__(self):
+                    </p>
+                    <p class="indent-2">self.name = <span class="code-green">"Ilyas Hatime"</span></p>
+                    <p class="indent-2">self.role = <span class="code-green">"SE Student"</span></p>
+                    <p class="indent-2">
+                      self.focus = <span class="code-green">["AI", "Systems", "Quantum"]</span>
+                    </p>
+                    <p class="indent-2">self.goal = <span class="code-green">"Build the future"</span></p>
+                    <br />
+                    <p class="indent">
+                      <span class="code-key">def</span> code(self):
+                    </p>
+                    <p class="indent-2"><span class="code-key">while</span> not success():</p>
+                    <p class="indent-3">learn()</p>
+                    <p class="indent-3">build()</p>
+                    <p class="indent-3">repeat()</p>
+                    <p class="comment"># Code. Learn. Build. Repeat.</p>
+                  </div>
+                </div>
+                <div class="device-base"></div>
+              </div>
+
+              <div class="desk-plant">
+                <span class="leaf leaf-a"></span>
+                <span class="leaf leaf-b"></span>
+                <span class="leaf leaf-c"></span>
+                <span class="pot"></span>
+              </div>
+
+              <div class="desk-mug">
+                <span>&lt;/&gt;</span>
+              </div>
+            </div>
+
+            <div class="hero-stack reveal">
+              <article class="status-card">
+                <p class="card-tag">Current Status</p>
+                <h2>SE Student</h2>
+                <span>2nd Year</span>
+              </article>
+              <article class="status-card">
+                <p class="card-tag">Focus Areas</p>
+                <ul>
+                  <li>Artificial Intelligence</li>
+                  <li>Systems</li>
+                  <li>Quantum Computing</li>
+                </ul>
+              </article>
+              <article class="status-card">
+                <p class="card-tag">Location</p>
+                <span>Morocco / China</span>
+              </article>
+            </div>
+          </section>
+
+          <section class="content-grid">
+            <article class="panel-card about-card reveal section" id="about">
+              <div class="panel-head">
+                <span class="panel-icon">◔</span>
+                <h2>About Me</h2>
+              </div>
+              <p>
+                I&apos;m a 20-year-old Software Engineering student from Morocco. I
+                obtained my baccalaureate with a good grade, and I&apos;m currently in
+                my second year. I&apos;m passionate about AI, Systems and the
+                connection between AI and Quantum Computing. I love building real
+                projects and learning every day.
+              </p>
+              <a class="mini-button" href="#contact">&gt; More About Me</a>
+            </article>
+
+            <article class="panel-card skills-card reveal section" id="skills">
+              <div class="panel-head">
+                <span class="panel-icon">⌁</span>
+                <h2>Tech Stack</h2>
+              </div>
+              <div class="tech-grid">
+                <div class="tech-item"><span class="badge python">Py</span><span>Python</span></div>
+                <div class="tech-item"><span class="badge cpp">C+</span><span>C / C++</span></div>
+                <div class="tech-item"><span class="badge js">JS</span><span>JavaScript</span></div>
+                <div class="tech-item"><span class="badge html">H5</span><span>HTML5</span></div>
+                <div class="tech-item"><span class="badge css">C3</span><span>CSS3</span></div>
+                <div class="tech-item"><span class="badge sql">DB</span><span>SQL</span></div>
+                <div class="tech-item"><span class="badge git">Gi</span><span>Git</span></div>
+                <div class="tech-item"><span class="badge gh">GH</span><span>GitHub</span></div>
+                <div class="tech-item"><span class="badge ui">UI</span><span>UI Design</span></div>
+                <div class="tech-item"><span class="badge ps">PS</span><span>Problem Solving</span></div>
+              </div>
+            </article>
+
+            <article class="panel-card system-card reveal">
+              <div class="panel-head">
+                <span class="panel-icon">&gt;</span>
+                <h2>System Info</h2>
+              </div>
+              <ul class="system-list">
+                <li><span>name</span><strong>Ilyas Hatime</strong></li>
+                <li><span>age</span><strong>20</strong></li>
+                <li><span>status</span><strong>SE Student (2nd Year)</strong></li>
+                <li><span>location</span><strong>Morocco / China</strong></li>
+                <li><span>focus</span><strong>AI, Systems, Quantum</strong></li>
+                <li><span>energy</span><strong class="energy">████████████ 100%</strong></li>
+                <li><span>passion</span><strong>Building the future</strong></li>
+              </ul>
+            </article>
+
+            <article class="panel-card projects-card reveal section" id="projects">
+              <div class="panel-head">
+                <span class="panel-icon">//</span>
+                <h2>Featured Projects</h2>
+              </div>
+
+              <div class="projects-showcase">
+                <article class="project-box">
+                  <div class="project-thumb thumb-game">
+                    <span>Python Pygame</span>
+                  </div>
+                  <div class="project-copy">
+                    <h3>Python Pygame Full Game</h3>
+                    <p>
+                      Worked with my team to build a complete game using Python and
+                      Pygame.
+                    </p>
+                    <div class="project-tags">
+                      <span>Python</span>
+                      <span>Pygame</span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="project-box">
+                  <div class="project-thumb thumb-site">
+                    <span>ISU Tournament</span>
+                  </div>
+                  <div class="project-copy">
+                    <h3>ISU Football Tournament Website</h3>
+                    <p>
+                      Built a website to manage and present tournament information
+                      in a clean and organized way.
+                    </p>
+                    <div class="project-tags">
+                      <span>HTML</span>
+                      <span>CSS</span>
+                      <span>JavaScript</span>
+                      <span>SQL</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </article>
+
+            <article class="panel-card vision-card reveal">
+              <div class="panel-head">
+                <span class="panel-icon">::</span>
+                <h2>My Journey &amp; Future Vision</h2>
+              </div>
+              <div class="vision-copy">
+                <p class="vision-lead">
+                  Software Engineering Student passionate about Artificial
+                  Intelligence, Quantum Computing, and Advanced Technologies.
+                </p>
+                <p>
+                  My goal is to pursue a Master&apos;s degree in Artificial
+                  Intelligence followed by a PhD in Quantum Computing, focusing
+                  on the integration of AI, Quantum Systems, and Nanotechnology
+                  to develop next-generation technologies capable of solving
+                  complex global challenges.
+                </p>
+                <p>
+                  I am deeply interested in research and innovation, especially
+                  in areas where Quantum Computing and AI can work together to
+                  achieve unprecedented computational power, intelligent
+                  optimization, and scientific breakthroughs.
+                </p>
+                <p>
+                  Currently, I am building my skills through programming,
+                  research projects, cybersecurity, machine learning, and
+                  quantum computing studies while continuously working on
+                  innovative ideas that could contribute to the future of
+                  technology and humanity.
+                </p>
+              </div>
+              <div class="vision-tags">
+                <span>AI</span>
+                <span>Quantum Systems</span>
+                <span>Nanotechnology</span>
+                <span>Research</span>
+                <span>Innovation</span>
+                <span>Machine Learning</span>
+              </div>
+            </article>
+
+            <article class="panel-card education-card reveal section" id="education">
+              <div class="panel-head">
+                <span class="panel-icon">//</span>
+                <h2>Education Journey</h2>
+              </div>
+              <div class="edu-timeline">
+                <div class="edu-item">
+                  <span class="edu-dot"></span>
+                  <div>
+                    <strong>2023</strong>
+                    <h3>Baccalaureate (Morocco)</h3>
+                    <p>Obtained with a good grade.</p>
+                  </div>
+                </div>
+                <div class="edu-item">
+                  <span class="edu-dot"></span>
+                  <div>
+                    <strong>2023 - 2024</strong>
+                    <h3>Language Year (China)</h3>
+                    <p>Studied Chinese and reached HSK 3 level.</p>
+                  </div>
+                </div>
+                <div class="edu-item">
+                  <span class="edu-dot"></span>
+                  <div>
+                    <strong>2024 - Present</strong>
+                    <h3>Software Engineering (2nd Year)</h3>
+                    <p>China University of Petroleum.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel-card languages-card reveal">
+              <div class="panel-head">
+                <span class="panel-icon">//</span>
+                <h2>Languages</h2>
+              </div>
+              <div class="language-bars">
+                <div class="lang-row"><span>Arabic</span><i style="--level: 88%"></i></div>
+                <div class="lang-row"><span>French</span><i style="--level: 74%"></i></div>
+                <div class="lang-row"><span>English</span><i style="--level: 82%"></i></div>
+                <div class="lang-row"><span>Chinese (HSK3)</span><i style="--level: 70%"></i></div>
+              </div>
+            </article>
+
+            <article class="panel-card contact-card reveal section" id="contact">
+              <div class="panel-head">
+                <span class="panel-icon">✉</span>
+                <h2>Contact Console</h2>
+              </div>
+              <div class="contact-layout">
+                <div class="contact-copy">
+                  <p>
+                    Open to collaboration, internships, networking, and future work
+                    in AI, systems, cybersecurity, and software engineering.
+                  </p>
+                  <div class="contact-links">
+                    <a href="tel:+8618364291233">Phone: 18364291233</a>
+                    <a href="mailto:ilyasihtm5@gmail.com">Email: ilyasihtm5@gmail.com</a>
+                    <a
+                      href="https://wa.me/212631007600"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      WhatsApp: 0631007600
+                    </a>
+                    <a
+                      href="https://github.com/ilyasmustaphahatime"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      GitHub
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/ilyas-ilyas-4372a33b4/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B0DAUPdgySHGIzhyr4azHnw%3D%3D"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+
+                <form
+                  class="contact-form"
+                  id="contact-form"
+                  action="https://formsubmit.co/ilyasihtm5@gmail.com"
+                  method="POST"
+                  novalidate
+                >
+                  <input type="hidden" name="_subject" value="New portfolio contact message from ilyashatime site" />
+                  <input type="hidden" name="_template" value="table" />
+                  <input type="text" name="_honey" class="hidden-field" tabindex="-1" autocomplete="off" />
+                  <input id="name" name="name" type="text" placeholder="Name" />
+                  <input id="email" name="email" type="email" placeholder="Email" />
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    placeholder="Message"
+                  ></textarea>
+                  <button class="mini-button submit-button" type="submit">
+                    &gt; Send Message
+                  </button>
+                  <p class="form-status" id="form-status" aria-live="polite"></p>
+                  <p class="contact-helper">
+                    First live submission may ask for a one-time email activation for
+                    secure delivery.
+                  </p>
+                </form>
+              </div>
+            </article>
+
+            <article class="panel-card quote-card reveal">
+              <p>
+                <span>&ldquo;</span>
+                Code is not just what I write, it&apos;s how I think.
+                <span>&rdquo;</span>
+              </p>
+            </article>
+          </section>
+        </main>
+
+        <footer class="terminal-footer">
+          <span>$ keep_learning.sh --never-stop</span>
+          <p>&copy; 2026 Ilyas Hatime. All rights reserved.</p>
+          <button class="back-to-top" type="button">^ back to top</button>
+        </footer>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
