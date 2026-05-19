@@ -438,6 +438,12 @@ img {
   transform: translateY(-2px);
 }
 
+.mini-button:disabled {
+  opacity: 0.72;
+  cursor: wait;
+  transform: none;
+}
+
 .terminal-button.primary,
 .mini-button,
 .submit-button {
@@ -1153,6 +1159,11 @@ img {
   color: var(--muted-text);
   font-size: 0.78rem;
   line-height: 1.6;
+}
+
+.contact-helper strong {
+  color: #f1f3f6;
+  font-weight: 600;
 }
 
 .quote-card p {

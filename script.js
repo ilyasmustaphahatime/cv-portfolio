@@ -8,6 +8,7 @@ const topNav = document.querySelector(".top-nav");
 const revealElements = document.querySelectorAll(".reveal");
 const contactForm = document.getElementById("contact-form");
 const formStatus = document.getElementById("form-status");
+const submitButton = contactForm?.querySelector('button[type="submit"]');
 
 function setNavOpen(forceOpen) {
   if (!mobileNavToggle || !topNav) return;
@@ -89,6 +90,32 @@ const revealObserver = new IntersectionObserver(
 
 revealElements.forEach((element) => revealObserver.observe(element));
 
+function setSubmitState(isSending) {
+  if (!submitButton) return;
+
+  submitButton.disabled = isSending;
+  submitButton.textContent = isSending ? "> Sending..." : "> Send Message";
+}
+
+function showContactSuccessFromUrl() {
+  if (!contactForm || !formStatus) return;
+
+  const currentUrl = new URL(window.location.href);
+  const contactStatus = currentUrl.searchParams.get("contact");
+
+  if (contactStatus !== "success") return;
+
+  formStatus.textContent =
+    "Message sent successfully. Please check my inbox for the reply process.";
+  formStatus.className = "form-status success";
+  contactForm.reset();
+  contactForm.scrollIntoView({ behavior: "smooth", block: "center" });
+
+  currentUrl.searchParams.delete("contact");
+  const cleanUrl = `${currentUrl.pathname}${currentUrl.search}${currentUrl.hash}`;
+  window.history.replaceState({}, "", cleanUrl);
+}
+
 if (contactForm) {
   contactForm.addEventListener("submit", (event) => {
     const name = contactForm.elements.namedItem("name").value.trim();
@@ -99,6 +126,7 @@ if (contactForm) {
       event.preventDefault();
       formStatus.textContent = "Please fill in all fields before sending.";
       formStatus.className = "form-status error";
+      setSubmitState(false);
       return;
     }
 
@@ -107,10 +135,12 @@ if (contactForm) {
       event.preventDefault();
       formStatus.textContent = "Please enter a valid email address.";
       formStatus.className = "form-status error";
+      setSubmitState(false);
       return;
     }
 
-    formStatus.textContent = "Sending message...";
+    setSubmitState(true);
+    formStatus.textContent = "Sending message and redirecting to confirmation...";
     formStatus.className = "form-status success";
   });
 }
@@ -123,3 +153,4 @@ window.addEventListener("resize", () => {
 
 setActiveLink();
 updateBackToTop();
+showContactSuccessFromUrl();
