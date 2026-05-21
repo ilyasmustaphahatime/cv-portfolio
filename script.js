@@ -10,6 +10,9 @@ const contactForm = document.getElementById("contact-form");
 const formStatus = document.getElementById("form-status");
 const submitButton = contactForm?.querySelector('button[type="submit"]');
 const fallbackEmailLink = document.getElementById("fallback-email-link");
+const EMAILJS_SERVICE_ID = "ilyass_hatime123";
+const EMAILJS_TEMPLATE_ID = "template_ghcythf";
+const EMAILJS_PUBLIC_KEY = "0JA0hzcMteQei1urN";
 
 function setNavOpen(forceOpen) {
   if (!mobileNavToggle || !topNav) return;
@@ -111,29 +114,28 @@ function buildMailtoLink(name, email, message) {
   return `mailto:ilyasihtm5@gmail.com?subject=${subject}&body=${body}`;
 }
 
-async function submitWithFormSubmit(form) {
-  const formData = new FormData(form);
-  const controller = new AbortController();
-  const timeoutId = window.setTimeout(() => controller.abort(), 10000);
+function updateTimeField() {
+  if (!contactForm) return;
 
-  try {
-    const response = await fetch(form.action, {
-      method: "POST",
-      body: formData,
-      headers: {
-        Accept: "application/json",
-      },
-      signal: controller.signal,
-    });
+  const timeField = contactForm.elements.namedItem("time");
+  if (!timeField) return;
 
-    if (!response.ok) {
-      throw new Error(`Request failed with status ${response.status}`);
-    }
+  timeField.value = new Date().toLocaleString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
+}
 
-    return await response.json();
-  } finally {
-    window.clearTimeout(timeoutId);
-  }
+function initEmailJs() {
+  if (!window.emailjs) return;
+
+  window.emailjs.init({
+    publicKey: EMAILJS_PUBLIC_KEY,
+  });
 }
 
 if (contactForm) {
@@ -165,13 +167,14 @@ if (contactForm) {
     setFallbackLinkVisibility(false);
     formStatus.textContent = "Sending message...";
     formStatus.className = "form-status success";
+    updateTimeField();
 
     try {
-      const result = await submitWithFormSubmit(contactForm);
-
-      if (!result.success) {
-        throw new Error("FormSubmit did not confirm success.");
-      }
+      await window.emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        contactForm
+      );
 
       formStatus.textContent =
         "Message sent successfully. I should receive it in my inbox soon.";
@@ -202,3 +205,4 @@ window.addEventListener("resize", () => {
 
 setActiveLink();
 updateBackToTop();
+initEmailJs();
